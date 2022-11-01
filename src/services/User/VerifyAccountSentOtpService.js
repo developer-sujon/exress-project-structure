@@ -1,8 +1,8 @@
 //Internal import
-const { CreateError } = require("../../../helper/ErrorHandler");
-const GenRandNumber = require("../../../helper/GenRandNumber");
-const CreateToken = require("../../../utility/CreateToken");
-const SendMailUtility = require("../../../utility/SendMailUtility");
+const { CreateError } = require("../../helper/ErrorHandler");
+const GenRandNumber = require("../../helper/GenRandNumber");
+const CreateToken = require("../../utility/CreateToken");
+const SendMailUtility = require("../../utility/SendMailUtility");
 
 const VerifyAccountSentOtpService = async (Request, UsersModel, OtpModel) => {
   const { Email } = Request.params;

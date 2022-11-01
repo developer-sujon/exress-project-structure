@@ -1,39 +1,42 @@
 //External Lib Import
 const AdminRoutes = require("express").Router();
 
-//Internal Import
-const { UserAuth, AdminAuth } = require("../middleware/CheckAuthLogin");
+//Internal Lib Import
+const {
+  CheckUserAuth,
+  CheckAdminAuth,
+} = require("../middleware/CheckAuthLogin");
 const AdminControllers = require("../controller/Admin/AdminControllers");
 
 //Select All User
 AdminRoutes.get(
   "/SelectAllUser",
-  UserAuth,
-  AdminAuth,
+  CheckUserAuth,
+  CheckAdminAuth,
   AdminControllers.SelectAllUser,
 );
 
 //Select User
 AdminRoutes.get(
   "/SelectUser/:Email",
-  UserAuth,
-  AdminAuth,
+  CheckUserAuth,
+  CheckAdminAuth,
   AdminControllers.SelectUser,
 );
 
 //Block User
 AdminRoutes.put(
   "/BlockUser/:Email",
-  UserAuth,
-  AdminAuth,
+  CheckUserAuth,
+  CheckAdminAuth,
   AdminControllers.BlockUser,
 );
 
 //Unblock User
 AdminRoutes.put(
   "/UnblockUser/:Email",
-  UserAuth,
-  AdminAuth,
+  CheckUserAuth,
+  CheckAdminAuth,
   AdminControllers.UnblockUser,
 );
 

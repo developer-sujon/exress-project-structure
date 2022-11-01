@@ -5,7 +5,7 @@ const path = require("path");
 const fs = require("fs");
 const shell = require("shelljs");
 
-//Internal import
+//Internal Lib Import
 const { CreateError } = require("../../helper/ErrorHandler");
 
 //Storage

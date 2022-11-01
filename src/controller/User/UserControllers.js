@@ -1,18 +1,18 @@
-//Internal import
+//Internal Lib Import
 const mongoose = require("mongoose");
 
-//Internal Import
+//Internal Lib Import
 const UsersModel = require("../../model/Users/UsersModel");
 const OtpModel = require("../../model/Otps/OtpModel");
 const UserDetailsService = require("../../services/User/UserDetailsService");
 const UserUpdateService = require("../../services/User/UserUpdateService");
 const UserPasswordChangeService = require("../../services/User/UserPasswordChangeService");
 const UserDeleteService = require("../../services/User/UserDeleteService");
-const RecoveryResetPassService = require("../../services/User/RecoveryAccount/RecoveryResetPassService");
-const VerifyRecoveryOtpService = require("../../services/User/RecoveryAccount/VerifyRecoveryOtpService");
-const SendRecoveryOtpService = require("../../services/User/RecoveryAccount/SendRecoveryOtpService");
-const VerifyAccountSentOtpService = require("../../services/User/VerifyAccount/VerifyAccountSentOtpService");
-const VerifyAccountVerifyOtpService = require("../../services/User/VerifyAccount/VerifyAccountVerifyOtpService");
+const VerifyRecoveryOtpService = require("../../services/User/VerifyRecoveryOtpService");
+const SendRecoveryOtpService = require("../../services/User/SendRecoveryOtpService");
+const RecoveryResetPassService = require("../../services/User/RecoveryResetPassService");
+const VerifyAccountSentOtpService = require("../../services/User/VerifyAccountSentOtpService");
+const VerifyAccountVerifyOtpService = require("../../services/User/VerifyAccountVerifyOtpService");
 
 /**
  * @desc User Details

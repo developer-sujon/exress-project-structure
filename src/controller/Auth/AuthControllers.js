@@ -1,4 +1,4 @@
-//Internal Import
+//Internal Lib Import
 const UsersModel = require("../../model/Users/UsersModel");
 const RegistrationService = require("../../services/Auth/RegistrationService");
 const LoginService = require("../../services/Auth/LoginService");

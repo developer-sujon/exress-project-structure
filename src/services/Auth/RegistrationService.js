@@ -1,8 +1,6 @@
-//External Lib Import
-const bcrypt = require("bcrypt");
-
-//Internal Import
+//Internal Lib Import
 const { CreateError } = require("../../helper/ErrorHandler");
+const { HashPassword } = require("../../utility/BcryptHelper");
 
 const RegistrationService = async (Request, UsersModel) => {
   const { Name, Phone, Email, Password } = Request.body;
@@ -25,10 +23,7 @@ const RegistrationService = async (Request, UsersModel) => {
   if (exitUser && exitUser.length > 0) {
     throw CreateError("User Already Register", 400);
   }
-
-  const salt = await bcrypt.genSalt(10);
-  const hash = await bcrypt.hash(Password, salt);
-  newUser.Password = hash;
+  newUser.Password = await HashPassword(Password);
 
   const User = await newUser.save();
   delete User._doc.Password;

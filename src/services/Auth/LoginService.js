@@ -15,26 +15,6 @@ const LoginService = async (Request, DataModel) => {
     throw CreateError("User Not found", 404);
   }
 
-  const userActive = await DataModel.aggregate([
-    {
-      $match: { Email: Email, AccountStatus: "PENDING" },
-    },
-  ]);
-
-  if (userActive.length > 0) {
-    throw CreateError("Your Account Not Active", 401);
-  }
-
-  const userBlock = await DataModel.aggregate([
-    {
-      $match: { Email: Email, AccountStatus: "REJECTED" },
-    },
-  ]);
-
-  if (userBlock.length > 0) {
-    throw CreateError("Your Account Rejected", 401);
-  }
-
   const verifyPassword = await VerifyPassword(Password, User[0].Password);
   if (!verifyPassword) {
     throw CreateError("Unauthorized Credentials", 401);

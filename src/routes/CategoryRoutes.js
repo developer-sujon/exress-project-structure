@@ -1,47 +1,47 @@
 //External Lib Import
 const CategoryRoutes = require("express").Router();
 const CategoryControllers = require("../controller/Category/CategoryControllers");
-const { UserAuth } = require("../middleware/CheckAuthLogin");
+const { CheckUserAuth } = require("../middleware/CheckAuthLogin");
 
 //Category Create
 CategoryRoutes.post(
   "/CategoryCreate",
-  UserAuth,
+  CheckUserAuth,
   CategoryControllers.CategoryCreate,
 );
 
 //Category Drop Down
 CategoryRoutes.get(
   "/CategoryDropDown",
-  UserAuth,
+  CheckUserAuth,
   CategoryControllers.CategoryDropDown,
 );
 
 //Category List
 CategoryRoutes.get(
   "/CategoryList/:pageNumber/:perPage/:searchKeyword",
-  UserAuth,
+  CheckUserAuth,
   CategoryControllers.CategoryList,
 );
 
 //Category Details
 CategoryRoutes.get(
   "/CategoryDetails/:id",
-  UserAuth,
+  CheckUserAuth,
   CategoryControllers.CategoryDetails,
 );
 
 //Category Update
 CategoryRoutes.patch(
   "/CategoryUpdate/:id",
-  UserAuth,
+  CheckUserAuth,
   CategoryControllers.CategoryUpdate,
 );
 
 //Category Delete
 CategoryRoutes.delete(
   "/CategoryDelete/:id",
-  UserAuth,
+  CheckUserAuth,
   CategoryControllers.CategoryDelete,
 );
 

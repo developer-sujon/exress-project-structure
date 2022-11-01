@@ -1,7 +1,7 @@
 //External Lib Import
 const routes = require("express").Router();
 
-//Internal Import
+//Internal Lib Import
 const AuthRoutes = require("./AuthRoutes");
 const UserRoutes = require("./UserRoutes");
 const AdminRoutes = require("./AdminRoutes");

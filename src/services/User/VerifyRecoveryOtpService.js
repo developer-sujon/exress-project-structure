@@ -1,14 +1,8 @@
 //Internal import
+const { CreateError } = require("../../helper/ErrorHandler");
 
-const { CreateError } = require("../../../helper/ErrorHandler");
-
-const VerifyAccountVerifyOtpService = async (
-  Request,
-  UsersModel,
-  OtpModel,
-  session,
-) => {
-  const { Email, OtpCode } = Request.params;
+const VerifyRecoveryOtpService = async (Request, OtpModel, session) => {
+  const { OtpCode, Email } = Request.params;
 
   const countOtp = await OtpModel.aggregate([
     { $match: { $and: [{ Email: Email }, { OtpCode: OtpCode }] } },
@@ -47,33 +41,10 @@ const VerifyAccountVerifyOtpService = async (
     {
       OtpStatus: 1,
     },
+    { new: true },
     { session },
   );
 
-  const User = await UsersModel.aggregate([{ $match: { Email: Email } }]);
-
-  if (!User.length > 0) {
-    throw CreateError("User Not Found", 404);
-  }
-
-  const blockUser = await UsersModel.aggregate([
-    {
-      $match: {
-        $and: [{ Email: Email }, { AccountStatus: "REJECTED" }],
-      },
-    },
-  ]);
-
-  if (blockUser.length > 0) {
-    throw CreateError("You're Account REJECTED", 400);
-  }
-
-  await UsersModel.updateOne(
-    { Email: Email },
-    { AccountStatus: "ACTIVE" },
-    { new: true },
-  );
-
-  return { message: "Account Verify Successful" };
+  return { message: "Otp Verify Successful" };
 };
-module.exports = VerifyAccountVerifyOtpService;
+module.exports = VerifyRecoveryOtpService;

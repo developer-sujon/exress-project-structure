@@ -1,25 +1,25 @@
 //External Lib Import
 const UserRoutes = require("express").Router();
 
-//Internal Import
-const { UserAuth } = require("../middleware/CheckAuthLogin");
+//Internal Lib Import
+const { CheckUserAuth } = require("../middleware/CheckAuthLogin");
 const UserControllers = require("../controller/User/UserControllers");
 
 //User Profile
-UserRoutes.get("/UserDetails", UserAuth, UserControllers.UserDetails);
+UserRoutes.get("/UserDetails", CheckUserAuth, UserControllers.UserDetails);
 
 //User Change Password
 UserRoutes.put(
   "/UserChangePassword",
-  UserAuth,
+  CheckUserAuth,
   UserControllers.UserChangePassword,
 );
 
 //Update User
-UserRoutes.patch("/UserUpdate", UserAuth, UserControllers.UserUpdate);
+UserRoutes.patch("/UserUpdate", CheckUserAuth, UserControllers.UserUpdate);
 
 //Delete User
-UserRoutes.delete("/UserDelete", UserAuth, UserControllers.UserDelete);
+UserRoutes.delete("/UserDelete", CheckUserAuth, UserControllers.UserDelete);
 
 //Send Recovery Otp
 UserRoutes.get("/SendRecoveryOtp/:Email", UserControllers.SendRecoveryOtp);

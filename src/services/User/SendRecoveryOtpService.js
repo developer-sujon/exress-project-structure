@@ -1,7 +1,7 @@
 //Internal import
-const { CreateError } = require("../../../helper/ErrorHandler");
-const GenRandNumber = require("../../../helper/GenRandNumber");
-const SendMailUtility = require("../../../utility/SendMailUtility");
+const { CreateError } = require("../../helper/ErrorHandler");
+const GenRandNumber = require("../../helper/GenRandNumber");
+const SendMailUtility = require("../../utility/SendMailUtility");
 
 const SendRecoveryOtpService = async (Request, UsersModel, OtpModel) => {
   const { Email } = Request.params;

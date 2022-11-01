@@ -1,7 +1,7 @@
 //External Lib Import
 const ObjectId = require("mongoose").Types.ObjectId;
 
-//Internal Import
+//Internal Lib Import
 const { CreateError } = require("../../helper/ErrorHandler");
 
 const UpdateService = async (Request, DataModel) => {

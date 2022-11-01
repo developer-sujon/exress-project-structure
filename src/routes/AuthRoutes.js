@@ -1,7 +1,7 @@
 //External Lib Import
 const AuthRoutes = require("express").Router();
 
-//Internal Import
+//Internal Lib Import
 const AuthControllers = require("../controller/Auth/AuthControllers");
 
 //Register User

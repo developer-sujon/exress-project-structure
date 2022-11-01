@@ -2,7 +2,7 @@
 const bcrypt = require("bcrypt");
 
 //Internal Import
-const { CreateError } = require("../../../helper/ErrorHandler");
+const { CreateError } = require("../../helper/ErrorHandler");
 
 const RecoveryResetPassService = async (Request, UsersModel, OtpModel) => {
   const { OtpCode, Email } = Request.params;
