@@ -2,10 +2,28 @@
 const express = require("express");
 const morgan = require("morgan");
 const dotenv = require("dotenv");
-const multer = require("multer");
 const path = require("path");
+const i18next = require("i18next");
+const i18nextMiddleware = require("i18next-http-middleware");
+const Backend = require("i18next-fs-backend");
 
 const app = new express();
+
+i18next
+  .use(Backend)
+  .use(i18nextMiddleware.LanguageDetector)
+  .init({
+    fallbackLng: "en",
+    backend: {
+      loadPath: "./src/locales/{{lng}}/translate.json",
+    },
+  });
+
+app.use(i18nextMiddleware.handle(i18next));
+
+app.get("/api/v1/posts", (req, res) => {
+  res.json({ message: req.t("Successfull Request") });
+});
 
 //Internal Lib Import
 const {
@@ -52,7 +70,7 @@ app.use(morgan("dev"));
 // Apply the rate limiting middleware to all requests
 const limiter = rateLimit({
   windowMs: 15 * 60 * 1000,
-  max: 10000,
+  max: 20,
   standardHeaders: true,
   legacyHeaders: false,
 });

@@ -23,12 +23,13 @@ const CheckUserAuth = async (req, res, next) => {
       },
     ]);
 
-    req.Email = user[0].Email;
-    req.UserId = user[0]._id;
-
     if (!user.length > 0) {
       throw CreateError("Invalid Credentials", 401);
     }
+
+    req.Email = user[0].Email;
+    req.UserId = user[0]._id;
+
     next();
   } catch (error) {
     res.status(401).json({ message: "Invalid Credentials" });
